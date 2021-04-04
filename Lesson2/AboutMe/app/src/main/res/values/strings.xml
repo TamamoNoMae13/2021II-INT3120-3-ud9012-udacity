@@ -2,9 +2,9 @@
     <string name="app_name">AboutMe</string>
     <string name="name">Nguyễn Mạnh Hùng</string>
     <string name="yellow_star">Yellow star</string>
-    <string name="bio">Tôi là Nguyễn Mạnh Hùng.
-\nSinh viên năm 3, trường Đại học Công Nghệ, Đại học Quốc gia Hà Nội.
-\n\nĐây là app AboutMe thuộc course Mobile App dev with Kotlin trên Udacity.
+    <string name="bio1">Tôi là Nguyễn Mạnh Hùng.
+\nSinh viên năm 3, trường Đại học Công Nghệ, Đại học Quốc gia Hà Nội.</string>
+    <string name="bio2">Đây là app AboutMe thuộc course Mobile App dev with Kotlin trên Udacity.
 \n\nĐừng để ý mấy thứ linh tinh dưới đây, vì tôi chỉ muốn nó dài ra tràn màn hình và test tính năng scroll
 \nMong các bạn thông cảm.
 \n\nMỗi thiên nhiên kỷ có 10 thế kỷ.
@@ -15,4 +15,6 @@
 \nMỗi giờ có 60 phút.
 \nMỗi phút có 60 giây.</string>
     <string name="avatar">Avatar</string>
+    <string name="what_is_your_nickname">What is your Nickname?</string>
+    <string name="done">Done</string>
 </resources>
