@@ -14,6 +14,8 @@
             android:id="@+id/action_titleFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
+
+    <!-- The complete game fragment within the navigation XML, complete with tools:layout. -->
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.android.navigation.GameFragment"
