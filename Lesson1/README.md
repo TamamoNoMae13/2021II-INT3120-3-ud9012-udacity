@@ -1,3 +1,5 @@
-# Lesson 1: Dice Roller
+# Lesson 1: Build your First App
 
-**Status:** Finished.
+## Status:
+
+**DiceRoller:** Finished.

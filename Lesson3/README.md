@@ -1,5 +1,5 @@
-# Lesson 3:
+# Lesson 3: App Navigation
 
 ## Status:
 
-**Android Trivia:** Finished.
+**AndroidTrivia:** Finished.
