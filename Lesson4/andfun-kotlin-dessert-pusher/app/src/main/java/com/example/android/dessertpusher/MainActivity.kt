@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
         super.onCreate(savedInstanceState)
 
         // Log.i("MainActivity", "onCreate called")
-        Timber.i("message here")
+        Timber.i("onCreate triggered")
 
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -185,34 +185,34 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
     /** Lifecycle Methods **/
     override fun onResume() {
         super.onResume()
-        Timber.i("message here")
+        Timber.i("onResume triggered!")
     }
 
     override fun onPause() {
         super.onPause()
-        Timber.i("message here")
+        Timber.i("onPause triggered!")
     }
 
     override fun onStart() {
         super.onStart()
         // Log.i("MainActivity", "onCreate called")
-        Timber.i("message here")
+        Timber.i("onStart triggered!")
         // dessertTimer.startTimer()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.i("message here")
+        Timber.i("onDestroy triggered!")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Timber.i("message here")
+        Timber.i("onRestart triggered!")
     }
 
     override fun onStop() {
         super.onStop()
-        Timber.i("message here")
+        Timber.i("onStop triggered!")
         // dessertTimer.stopTimer()
     }
 }
