@@ -37,7 +37,7 @@ class GameFragment : Fragment() {
     private lateinit var binding: GameFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
 
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(
@@ -57,21 +57,21 @@ class GameFragment : Fragment() {
         }
 
         /** Set up the observation relationship */
-        viewModel.word.observe(this, Observer { newWord ->
+        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
             binding.wordText.text = newWord
         })
 
-        viewModel.score.observe(this, Observer { newScore ->
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
 
         /** Set up the observation to show appropriate time */
-        viewModel.currentTime.observe(this, Observer { newTime ->
+        viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
             binding.timerText.text = DateUtils.formatElapsedTime(newTime)
         })
 
         /** Set up an observer of eventGameFinish */
-        viewModel.eventGameFinish.observe(this, Observer { isFinished ->
+        viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { isFinished ->
             if (isFinished) {
                 gameFinished()
                 viewModel.onGameFinishComplete()
@@ -82,7 +82,7 @@ class GameFragment : Fragment() {
     }
 
     /** Called when the game is finished */
-    fun gameFinished() {
+    private fun gameFinished() {
         val currentScore = viewModel.score.value ?: 0
         val action = GameFragmentDirections.actionGameToScore(currentScore)
         findNavController(this).navigate(action)
