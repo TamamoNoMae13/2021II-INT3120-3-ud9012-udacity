@@ -29,9 +29,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.ScoreFragmentBinding
 
-/**
- * Fragment where the final score is shown, after the game is over
- */
+/** Fragment where the final score is shown, after the game is over */
 class ScoreFragment : Fragment() {
 
     private lateinit var viewModel: ScoreViewModel
@@ -54,27 +52,21 @@ class ScoreFragment : Fragment() {
         viewModelFactory = ScoreViewModelFactory(scoreFragmentArgs.score)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ScoreViewModel::class.java)
 
-        binding.scoreText.text = scoreFragmentArgs.score.toString()
+        binding.scoreViewModel = viewModel
 
         /** Set up an observer of Score */
         viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
 
-        binding.playAgainButton.setOnClickListener { onPlayAgain() }
-
         /** Set up an observer of eventPlayAgain */
         viewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
             if (playAgain) {
-                onPlayAgain()
+                findNavController().navigate(ScoreFragmentDirections.actionRestart())
                 viewModel.onPlayAgainComplete()
             }
         })
 
         return binding.root
-    }
-
-    private fun onPlayAgain() {
-        findNavController().navigate(ScoreFragmentDirections.actionRestart())
     }
 }
