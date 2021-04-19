@@ -28,7 +28,7 @@ class GameViewModel : ViewModel() {
         // This is the number of milliseconds in a second
         const val ONE_SECOND = 1000L
         // This is the total time of the game
-        const val COUNTDOWN_TIME = 7000L
+        const val COUNTDOWN_TIME = 60000L
         // This is the time when the phone will start buzzing each second
         const val COUNTDOWN_PANIC_SECONDS = 10L
     }
