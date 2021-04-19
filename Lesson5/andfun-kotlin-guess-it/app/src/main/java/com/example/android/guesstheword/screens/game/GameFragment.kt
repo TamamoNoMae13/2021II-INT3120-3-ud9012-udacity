@@ -17,19 +17,21 @@
 package com.example.android.guesstheword.screens.game
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.GameFragmentBinding
 
-/**
- * Fragment where the game is played
- */
+/** Fragment where the game is played */
 class GameFragment : Fragment() {
+
+    private lateinit var viewModel: GameViewModel
 
     // The current word
     private var word = ""
@@ -53,20 +55,26 @@ class GameFragment : Fragment() {
                 false
         )
 
+        /** Create and initialize a GameViewModel, using ViewModelProviders. Add a log statement */
+        Log.i("GameFragment", "Called ViewModelProvider")
+        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+
         resetList()
         nextWord()
 
-        binding.correctButton.setOnClickListener { onCorrect() }
-        binding.skipButton.setOnClickListener { onSkip() }
+        binding.correctButton.setOnClickListener {
+            onCorrect()
+        }
+        binding.skipButton.setOnClickListener {
+            onSkip()
+        }
         updateScoreText()
         updateWordText()
-        return binding.root
 
+        return binding.root
     }
 
-    /**
-     * Resets the list of words and randomizes the order
-     */
+    /** Resets the list of words and randomizes the order */
     private fun resetList() {
         wordList = mutableListOf(
                 "queen",
@@ -94,17 +102,13 @@ class GameFragment : Fragment() {
         wordList.shuffle()
     }
 
-    /**
-     * Called when the game is finished
-     */
+    /** Called when the game is finished */
     private fun gameFinished() {
         val action = GameFragmentDirections.actionGameToScore(score)
         findNavController(this).navigate(action)
     }
 
-    /**
-     * Moves to the next word in the list
-     */
+    /** Moves to the next word in the list */
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
@@ -116,8 +120,7 @@ class GameFragment : Fragment() {
         updateScoreText()
     }
 
-    /** Methods for buttons presses **/
-
+    /** Methods for buttons presses */
     private fun onSkip() {
         score--
         nextWord()
@@ -128,8 +131,7 @@ class GameFragment : Fragment() {
         nextWord()
     }
 
-    /** Methods for updating the UI **/
-
+    /** Methods for updating the UI */
     private fun updateWordText() {
         binding.wordText.text = word
 
