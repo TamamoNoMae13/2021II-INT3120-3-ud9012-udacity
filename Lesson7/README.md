@@ -2,4 +2,4 @@
 
 ## Status:
 
-**SleepTracker:** 0%
+**SleepTracker:** 38%
